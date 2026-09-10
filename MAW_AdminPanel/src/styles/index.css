@@ -1,0 +1,23 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* Remove native browser number input spin buttons */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Full Page A4 Dimensions */
+.a4-sheet {
+  width: 210mm !important;
+  min-height: 297mm !important;
+  box-sizing: border-box !important;
+}
+
+

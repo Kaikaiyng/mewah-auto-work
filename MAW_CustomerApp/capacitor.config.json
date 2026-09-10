@@ -1,0 +1,9 @@
+{
+  "appId": "com.mewahautowork.customer",
+  "appName": "Mewah Auto Work Customer",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  }
+}

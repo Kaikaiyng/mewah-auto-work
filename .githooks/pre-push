@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+cd "$(git rev-parse --show-toplevel)"
+node tools/check-public-snapshot.mjs
+if ! command -v gitleaks >/dev/null 2>&1; then
+  printf '%s\n' 'Push blocked: install Gitleaks and add it to PATH before uploading this repository.' >&2
+  exit 1
+fi
+gitleaks git . --redact --no-banner --log-opts=--all

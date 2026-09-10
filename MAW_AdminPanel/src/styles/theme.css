@@ -1,0 +1,642 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.maw-sidebar-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  -webkit-overflow-scrolling: touch;
+}
+
+.maw-sidebar-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0;
+  height: 0;
+}
+
+.maw-editor-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.maw-editor-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.maw-editor-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.maw-editor-scroll::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.maw-editor-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+@keyframes maw-login-float {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -16px, 0) scale(1.04); }
+}
+
+@keyframes maw-login-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes maw-login-enter-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes maw-login-enter-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.maw-login-orb { animation: maw-login-float 8s ease-in-out infinite; }
+.maw-login-logo { animation: maw-login-logo-float 5s ease-in-out infinite; }
+.maw-login-enter-left { animation: maw-login-enter-left 650ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.maw-login-enter-right { animation: maw-login-enter-right 650ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@keyframes maw-stage-current-breathe {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 4px rgba(56, 189, 248, 0.28),
+      0 0 14px rgba(14, 165, 233, 0.42),
+      0 4px 12px rgba(14, 116, 144, 0.28);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 0 7px rgba(56, 189, 248, 0.45),
+      0 0 22px rgba(14, 165, 233, 0.65),
+      0 6px 18px rgba(14, 116, 144, 0.42);
+  }
+}
+
+.maw-stage-current-node {
+  animation: maw-stage-current-breathe 2.4s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+@keyframes maw-priority-breathe {
+  0%, 100% {
+    box-shadow:
+      0 4px 14px rgba(15, 23, 42, 0.08),
+      0 0 0 1px var(--maw-priority-ring),
+      0 0 8px var(--maw-priority-glow-soft);
+  }
+  50% {
+    box-shadow:
+      0 8px 22px rgba(15, 23, 42, 0.11),
+      0 0 0 2px var(--maw-priority-ring),
+      0 0 24px var(--maw-priority-glow);
+  }
+}
+
+.maw-priority-card {
+  border-color: var(--maw-priority-border);
+  border-left-color: var(--maw-priority-accent);
+  background-color: var(--maw-priority-bg, #ffffff);
+  animation: maw-priority-breathe var(--maw-priority-speed) ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+.maw-priority-urgent {
+  --maw-priority-accent: #ef4444;
+  --maw-priority-border: rgba(248, 113, 113, 0.72);
+  --maw-priority-ring: rgba(239, 68, 68, 0.28);
+  --maw-priority-glow-soft: rgba(239, 68, 68, 0.12);
+  --maw-priority-glow: rgba(239, 68, 68, 0.32);
+  --maw-priority-bg: #fff5f5;
+  --maw-priority-speed: 2.2s;
+}
+
+.maw-priority-high {
+  --maw-priority-accent: #f97316;
+  --maw-priority-border: rgba(251, 146, 60, 0.62);
+  --maw-priority-ring: rgba(249, 115, 22, 0.22);
+  --maw-priority-glow-soft: rgba(249, 115, 22, 0.09);
+  --maw-priority-glow: rgba(249, 115, 22, 0.24);
+  --maw-priority-bg: #fffaf0;
+  --maw-priority-speed: 3s;
+}
+
+.maw-priority-normal {
+  --maw-priority-accent: #3b82f6;
+  --maw-priority-border: rgba(96, 165, 250, 0.48);
+  --maw-priority-ring: rgba(59, 130, 246, 0.14);
+  --maw-priority-glow-soft: rgba(59, 130, 246, 0.06);
+  --maw-priority-glow: rgba(59, 130, 246, 0.16);
+  --maw-priority-bg: #ffffff;
+  --maw-priority-speed: 4.2s;
+}
+
+@keyframes maw-expand-enter {
+  from { opacity: 0; transform: translateY(-0.5rem) scaleY(0.97); }
+  to { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+@keyframes maw-accordion-open {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes maw-accordion-close {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+@keyframes maw-collapsible-open {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-collapsible-content-height); opacity: 1; }
+}
+
+@keyframes maw-collapsible-close {
+  from { height: var(--radix-collapsible-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+.maw-expand-enter,
+.maw-expand-popover {
+  transform-origin: top center;
+  animation: maw-expand-enter 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.maw-work-order-flow {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    grid-template-rows 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 180ms ease-out;
+}
+
+.maw-work-order-flow[data-expanded="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  pointer-events: auto;
+  transition:
+    grid-template-rows 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease-out 55ms;
+}
+
+.maw-work-order-flow-clip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.maw-work-order-flow-content {
+  transform: translateY(-6px);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.maw-work-order-flow[data-expanded="true"] .maw-work-order-flow-content {
+  transform: translateY(0);
+}
+
+[data-slot="accordion-content"][data-state="open"] {
+  animation: maw-accordion-open 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-slot="accordion-content"][data-state="closed"] {
+  animation: maw-accordion-close 190ms ease-in;
+}
+
+[data-slot="collapsible-content"][data-state="open"] {
+  overflow: hidden;
+  animation: maw-collapsible-open 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-slot="collapsible-content"][data-state="closed"] {
+  overflow: hidden;
+  animation: maw-collapsible-close 190ms ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maw-expand-enter,
+  .maw-expand-popover,
+  .maw-work-order-flow,
+  .maw-work-order-flow-content,
+  [data-slot="accordion-content"],
+  [data-slot="collapsible-content"] {
+    animation-duration: 1ms !important;
+  }
+
+  .maw-login-orb,
+  .maw-login-logo,
+  .maw-login-enter-left,
+  .maw-login-enter-right {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .maw-priority-card {
+    animation: none !important;
+    box-shadow:
+      0 4px 14px rgba(15, 23, 42, 0.08),
+      0 0 0 1px var(--maw-priority-ring),
+      0 0 12px var(--maw-priority-glow-soft);
+  }
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.3;
+    color: #0f172a;
+  }
+
+  h2 {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    color: #0f172a;
+  }
+
+  h3 {
+    font-size: 0.9375rem; /* 15px */
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    color: #1e293b;
+  }
+
+  h4 {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600;
+    line-height: 1.4;
+    color: #334155;
+  }
+
+  label {
+    font-size: 0.8125rem; /* 13px */
+    font-weight: 600;
+    line-height: 1.4;
+    color: #334155;
+  }
+
+  button {
+    font-size: 0.8125rem; /* 13px */
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  input, select, textarea {
+    font-size: 0.8125rem; /* 13px */
+    font-weight: 400;
+    line-height: 1.4;
+    color: #0f172a;
+  }
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Shared Admin Panel visual language. Scoped so login and customer-facing UI are unaffected. */
+@layer components {
+  .maw-admin-shell {
+    color: #1f2937;
+    background:
+      radial-gradient(circle at 85% 0%, rgba(79, 70, 229, 0.035), transparent 24rem),
+      #f6f7fb;
+  }
+
+  .maw-admin-content {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .maw-admin-sidebar {
+    contain: layout style;
+    will-change: width;
+    backface-visibility: hidden;
+  }
+
+  .maw-admin-main {
+    will-change: padding-left;
+  }
+
+  .maw-admin-content > div > div:first-child h1 {
+    color: #0f172a;
+    font-size: 1.375rem;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+  }
+
+  .maw-admin-content :where(.shadow, .shadow-sm, .shadow-md) {
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035), 0 6px 18px rgba(15, 23, 42, 0.025);
+  }
+
+  .maw-admin-content :where(div, section).bg-white:where(.shadow, .shadow-sm) {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+  }
+
+  .maw-admin-content table {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.8125rem;
+  }
+
+  .maw-admin-content table thead {
+    background: #f8fafc;
+  }
+
+  .maw-admin-content table thead th {
+    padding-block: 0.65rem;
+    padding-inline: 0.875rem;
+    color: #64748b;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .maw-admin-content table tbody td {
+    padding-block: 0.75rem;
+    padding-inline: 0.875rem;
+    font-size: 0.8125rem;
+    color: #1e293b;
+  }
+
+  .maw-admin-content table tbody tr {
+    transition: background-color 140ms ease;
+  }
+
+  .maw-admin-content table tbody tr:hover {
+    background: rgba(238, 242, 255, 0.42);
+  }
+
+  .maw-admin-content :where(input:not([type="checkbox"]):not([type="radio"]), textarea) {
+    border-color: #dfe3ea;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(15, 23, 42, 0.02);
+  }
+
+  .maw-admin-content :where(input:not([type="checkbox"]):not([type="radio"]), textarea):focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  .maw-admin-content button {
+    letter-spacing: -0.005em;
+  }
+
+  .maw-filter-bar {
+    padding: 0.625rem;
+    border: 1px solid #e2e6ed;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035), 0 5px 14px rgba(15, 23, 42, 0.025);
+  }
+
+  .maw-filter-bar :where(input:not([type="checkbox"]):not([type="radio"]), button[role="combobox"], .maw-filter-control, .maw-filter-action) {
+    height: 2.5rem !important;
+    min-height: 2.5rem !important;
+    border-color: #d7dce5 !important;
+    border-radius: 0.625rem !important;
+    background-color: #fff;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem;
+  }
+
+  .maw-filter-bar :where(input:not([type="checkbox"]):not([type="radio"]), button[role="combobox"]) {
+    color: #1f2937;
+  }
+
+  .maw-filter-bar input::placeholder {
+    color: #9ca3af;
+  }
+
+  .maw-search-field {
+    position: relative;
+    min-width: 0;
+  }
+
+  .maw-search-field > svg:first-child {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    z-index: 1;
+    width: 1rem !important;
+    height: 1rem !important;
+    color: #9ca3af !important;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .maw-search-field > input {
+    width: 100%;
+    padding-inline: 2.5rem 0.875rem !important;
+  }
+
+  .maw-filter-segmented {
+    min-height: 2.5rem;
+    border: 1px solid #e2e6ed;
+    border-radius: 0.625rem;
+    background: #f3f4f6;
+  }
+
+  .maw-admin-content :where(.bg-white.rounded-lg, .bg-white.rounded-xl, .bg-white.rounded-2xl) {
+    border-color: #e5e7eb;
+  }
+
+  .maw-admin-content .rounded-full.bg-green-100 {
+    border: 1px solid #a7f3d0;
+    background: #ecfdf5;
+    color: #047857;
+  }
+
+  .maw-admin-content .rounded-full.bg-blue-100 {
+    border: 1px solid #bfdbfe;
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+
+  .maw-admin-content .rounded-full.bg-yellow-100,
+  .maw-admin-content .rounded-full.bg-amber-100 {
+    border: 1px solid #fde68a;
+    background: #fffbeb;
+    color: #b45309;
+  }
+
+  .maw-admin-content .rounded-full.bg-red-100 {
+    border: 1px solid #fecaca;
+    background: #fef2f2;
+    color: #b91c1c;
+  }
+
+  .maw-admin-content .rounded-full.bg-purple-100 {
+    border: 1px solid #ddd6fe;
+    background: #f5f3ff;
+    color: #6d28d9;
+  }
+
+  .maw-admin-content .rounded-full.bg-gray-100 {
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    color: #4b5563;
+  }
+
+  @media (max-width: 640px) {
+    .maw-admin-content > div > div:first-child h1 {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .maw-admin-sidebar,
+    .maw-admin-main {
+      transition-duration: 0ms !important;
+    }
+  }
+}

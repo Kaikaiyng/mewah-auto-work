@@ -1,0 +1,76 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+deploy_package/
+.cache/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Private server-side database credentials
+backend/db_config.php
+maw_db_config.php
+
+# Local AutoCount export utility artifacts
+/Autocount_Sync_Program/**/.vs/
+/Autocount_Sync_Program/**/bin/
+/Autocount_Sync_Program/**/obj/
+/Autocount_Sync_Program/**/packages/
+/Autocount_Sync_Program/**/config.json
+/Autocount_Sync_Program/**/exports/
+
+# Runtime workshop photo files (metadata remains in the database).
+/backend/storage/work-order-photos/
+/backend/uploads/invoices/*
+!/backend/uploads/invoices/.htaccess
+MewahAutoWork_Complete.zip
+
+# Publication security: never version runtime credentials, exports or compiled payloads.
+.env*
+!.env.example
+*.zip
+*.apk
+*.aab
+*.dll
+*.exe
+*.pdb
+*.pfx
+*.p12
+*.pem
+*.key
+*.jks
+*.keystore
+*.csv
+*.xlsx
+*.xls
+*.pdf
+*.csproj.user
+/scratch/
+/autocount_import/
+**/verification/
+**/artifacts/
+**/*backup*
+**/*Backup*
+**/test*.txt
+**/errors.txt
+**/build_output.txt

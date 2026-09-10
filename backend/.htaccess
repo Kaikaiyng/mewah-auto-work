@@ -1,0 +1,10 @@
+Options -Indexes
+
+<FilesMatch "^(connection\.php|db_config\.example\.php|check_env\.php|run_migrations\.php|clear_db\.php|sync_db\.php)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Deny from all
+  </IfModule>
+</FilesMatch>
